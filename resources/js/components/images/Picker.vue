@@ -111,7 +111,6 @@ const fetchPreviewImageUrl = async (imageId: number | null) => {
         previewImageUrl.value = null;
         return;
     }
-
     try {
         const response = await axios.get(`/api/images/${imageId}`);
         const image = response.data;
@@ -131,7 +130,6 @@ watch(
     { immediate: true }
 );
 
-// Fetch images for the picker
 const fetchImages = async () => {
     try {
         const response = await axios.get('/api/images');
@@ -141,20 +139,17 @@ const fetchImages = async () => {
     }
 };
 
-// Handle image selection
 const pickImage = (image: Image) => {
     pickedImage.value = image;
     emit('image-picked', image);
     showImagePickerDialog.value = false;
 };
 
-// Handle image editing
 const editImage = (image: Image) => {
     selectedImage.value = image;
     isEditOpen.value = true;
 };
 
-// Handle image uploads and deletions
 const handleImageUploaded = () => {
     fetchImages();
 };
@@ -178,7 +173,6 @@ const formatSize = (size: number) => {
     return sizeInMB.toFixed(3) + ' MB';
 };
 
-// Fetch images on component mount
 onMounted(() => {
     fetchImages();
 });

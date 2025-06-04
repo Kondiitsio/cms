@@ -31,7 +31,6 @@ const emit = defineEmits<{
     (event: 'update-subblock', payload: Subblock): void;
 }>();
 
-// Update button properties
 const updateButton = (buttonIndex: number, key: keyof Button, value: string) => {
     const updatedButtons = [...(props.subblock.buttons || [])];
     updatedButtons[buttonIndex] = {
@@ -42,7 +41,6 @@ const updateButton = (buttonIndex: number, key: keyof Button, value: string) => 
     emit('update-subblock', { ...props.subblock, buttons: updatedButtons });
 };
 
-// Add a new button
 const addButton = () => {
     if ((props.subblock.buttons ?? []).length < 2) {
         emit('update-subblock', {
@@ -52,13 +50,11 @@ const addButton = () => {
     }
 };
 
-// Remove a button
 const removeButton = (buttonIndex: number) => {
     const updatedButtons = (props.subblock.buttons ?? []).filter((_, index) => index !== buttonIndex);
     emit('update-subblock', { ...props.subblock, buttons: updatedButtons });
 };
 
-// Move a button up or down
 const moveButton = (buttonIndex: number, direction: 'up' | 'down') => {
     const buttons = [...(props.subblock.buttons || [])];
     const targetIndex = direction === 'up' ? buttonIndex - 1 : buttonIndex + 1;

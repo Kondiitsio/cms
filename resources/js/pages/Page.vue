@@ -51,7 +51,7 @@ onMounted(fetchBlocks);
     <Head :title="page.title">
         <meta name="description" :content="page.seo" />
     </Head>
-    <div>
+    <div class="bg-[#F8F9FA]">
         <!-- Render blocks dynamically -->
         <div v-for="block in blocksData" :key="block.id">
             <HeroFront v-if="block.title === 'Hero'" :block="block" />

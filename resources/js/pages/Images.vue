@@ -34,5 +34,4 @@ const handleImageUploaded = () => {
             </div>
         </div>
     </AppLayout>
-
 </template>

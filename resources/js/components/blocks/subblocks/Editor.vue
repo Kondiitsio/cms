@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import Editor from '@/components/Editor.vue'; // Updated Editor component using Quill
+import Editor from '@/components/Editor.vue';
 
-// Props
 const props = defineProps({
     subblock: {
         type: Object as () => { type: string; text: string; },
@@ -9,7 +8,6 @@ const props = defineProps({
     },
 });
 
-// Emit event to notify parent about updates
 const emit = defineEmits(['update-subblock']);
 
 // Update the subblock's text
@@ -21,7 +19,6 @@ const updateText = (newText: string) => {
 
 <template>
     <div class="flex flex-col gap-4">
-        <!-- Editor for text input -->
         <Editor :modelValue="subblock.text || '<p></p>'" @update:modelValue="updateText" />
     </div>
 </template>

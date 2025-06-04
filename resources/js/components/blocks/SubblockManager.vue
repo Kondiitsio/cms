@@ -25,13 +25,11 @@ const props = defineProps({
     },
 });
 
-// Emit event to notify parent about updates
 const emit = defineEmits(['update-content']);
 
 // Local state for subblock type selection
 const newSubblockType = ref('');
 
-// Add a subblock
 const addSubblock = (subblockIndex: number, type?: string) => {
     const subblockType = type ?? newSubblockType.value;
     if (!subblockType) return;
@@ -48,14 +46,12 @@ const addSubblock = (subblockIndex: number, type?: string) => {
     newSubblockType.value = ''; // Reset the dropdown
 };
 
-// Delete a subblock
 const deleteSubblock = (subblockIndex: number) => {
     const updatedContent = [...props.content];
     updatedContent.splice(subblockIndex, 1); // Remove the subblock
     emit('update-content', updatedContent); // Emit the updated content
 };
 
-// Move a subblock up
 const moveSubblockUp = (subblockIndex: number) => {
     if (subblockIndex > 0) {
         const updatedContent = [...props.content];
@@ -66,7 +62,6 @@ const moveSubblockUp = (subblockIndex: number) => {
     }
 };
 
-// Move a subblock down
 const moveSubblockDown = (subblockIndex: number) => {
     if (subblockIndex < props.content.length - 1) {
         const updatedContent = [...props.content];
@@ -82,34 +77,29 @@ const moveSubblockDown = (subblockIndex: number) => {
     <div>
         
         <div class="flex justify-center mb-4">
-                <DropdownMenu>
-                    <DropdownMenuTrigger as-child>
-                        <SquarePlus value="" disabled class="cursor-pointer" />
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent class="w-56">
-                        <DropdownMenuItem
-                            @click="addSubblock(0, type.value)"
-                            v-for="type in subblockTypes"
-                            :key="type.value"
-                        >
-                            <span>{{ type.label }}</span>
-                        </DropdownMenuItem>
-                     
-                    </DropdownMenuContent>
-                </DropdownMenu>
-            </div>
-
-
+            <DropdownMenu>
+                <DropdownMenuTrigger as-child>
+                    <SquarePlus value="" disabled class="cursor-pointer" />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent class="w-56">
+                    <DropdownMenuItem
+                        @click="addSubblock(0, type.value)"
+                        v-for="type in subblockTypes"
+                        :key="type.value"
+                    >
+                        <span>{{ type.label }}</span>
+                    </DropdownMenuItem>
+                </DropdownMenuContent>
+            </DropdownMenu>
+        </div>
 
         <!-- Subblocks List -->
         <div v-for="(subblock, subIndex) in content" :key="subIndex">
             <div class="p-4 border rounded-xl border-sidebar-border/70 dark:border-sidebar-border">
-                
                 <div class="flex items-center justify-between mb-4">
                     <!-- Render Subblock Content -->
                     <Label>{{ subblock.type }}</Label>
                     
-
                     <!-- Subblock Action Buttons -->
                     <div class="flex items-center gap-2">
                     <ChevronUp v-if="subIndex > 0" class="cursor-pointer" @click="moveSubblockUp(subIndex)" />
@@ -117,10 +107,8 @@ const moveSubblockDown = (subblockIndex: number) => {
                     <OctagonX class="cursor-pointer text-red-500" @click="deleteSubblock(subIndex)" />
                     </div>
                 </div>
-
                 <slot :subblock="subblock" :subIndex="subIndex" />
             </div>
-
 
             <div class="flex justify-center my-4">
                 <DropdownMenu>
@@ -135,11 +123,9 @@ const moveSubblockDown = (subblockIndex: number) => {
                         >
                             <span>{{ type.label }}</span>
                         </DropdownMenuItem>
-                     
                     </DropdownMenuContent>
                 </DropdownMenu>
             </div>
-
         </div>
     </div>
 </template>

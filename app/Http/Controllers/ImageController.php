@@ -27,7 +27,7 @@ class ImageController extends Controller
     {
         // Validate the uploaded file
         $request->validate([
-            'image' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048', // Allow common image types
+            'image' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         // Create an ImageManager instance with the desired driver

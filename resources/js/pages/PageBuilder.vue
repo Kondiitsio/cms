@@ -22,7 +22,6 @@ import {
 import { Label } from '@/components/ui/label';
 import Button from '@/components/ui/button/Button.vue';
 
-// Props
 const props = defineProps({
     page: {
         type: Object as () => Page,
@@ -30,7 +29,6 @@ const props = defineProps({
     },
 });
 
-// Breadcrumbs
 const breadcrumbs = computed<BreadcrumbItem[]>(() => [
     {
         title: props.page.title,
@@ -38,12 +36,10 @@ const breadcrumbs = computed<BreadcrumbItem[]>(() => [
     },
 ]);
 
-// Blocks data
 const blocks = ref<{ id: number | null; title: string; content: any; order: number }[]>([]);
 const newBlockType = ref(''); // For selecting block type
 const openStates = ref<boolean[]>([]);
 
-// Fetch blocks for the page
 const fetchBlocks = async () => {
     try {
         const response = await axios.get(`/api/blocks/${props.page.id}`);
@@ -75,13 +71,11 @@ const createBlock = (index: number) => {
     newBlockType.value = ''; // Reset the block type selection
 };
 
-// Delete a block locally
 const deleteBlock = (index: number) => {
     blocks.value.splice(index, 1); // Remove the block from the list
     updateBlockOrder(); // Update the order of remaining blocks
 };
 
-// Move a block up locally
 const moveBlockUp = (index: number) => {
     if (index > 0) {
         const temp = blocks.value[index];
@@ -91,7 +85,6 @@ const moveBlockUp = (index: number) => {
     }
 };
 
-// Move a block down locally
 const moveBlockDown = (index: number) => {
     if (index < blocks.value.length - 1) {
         const temp = blocks.value[index];
@@ -102,19 +95,16 @@ const moveBlockDown = (index: number) => {
     }
 };
 
-// Update block order locally
 const updateBlockOrder = () => {
     blocks.value.forEach((block, index) => {
         block.order = index;
     });
 };
 
-// Update a block's content
 const updateBlock = ({ index, content }: { index: number; content: any }) => {
     blocks.value[index].content = content;
 };
 
-// Save all changes to the database
 const saveChanges = async () => {
     try {
         const payload = blocks.value.map((block) => ({
@@ -146,8 +136,6 @@ onMounted(() => {
         <div class="flex h-full flex-1 flex-col rounded-xl p-4">
 
             <!-- Dropdown Above All Blocks -->
-
-
             <div class="flex justify-center mb-4">
                 <DropdownMenu>
                     <DropdownMenuTrigger as-child>
@@ -169,11 +157,9 @@ onMounted(() => {
             </div>
 
             <!-- Blocks List -->
-            <div v-for="(block, index) in blocks" :key="index">
-                
+            <div v-for="(block, index) in blocks" :key="index"> 
                 <div class="p-4 border rounded-xl border-sidebar-border/70 dark:border-sidebar-border">
                     <Collapsible v-model:open="openStates[index]">
-                        
                         <div class="flex">
                             <div class="flex gap-2">
                                 <ChevronUp
@@ -191,23 +177,18 @@ onMounted(() => {
                                     @click="deleteBlock(index)"
                                 />
                             </div>
-
                         <CollapsibleTrigger class="flex items-center justify-end w-full gap-2 cursor-pointer">
                             <Label class="cursor-pointer">{{ block.title }}</Label>
                             <ChevronDown />
                         </CollapsibleTrigger>
                         </div>
                         <CollapsibleContent class="mt-4">
-
-                        <!-- Use HeroBlock Component -->
                         <Hero
                             v-if="block.title === 'Hero'"
                             :block="block"
                             :index="index"
                             @update-block="updateBlock"
                         />
-
-                        <!-- Other Block Types -->
                         <Content
                             v-else-if="block.title === 'Content'"
                             :block="block"
@@ -238,11 +219,8 @@ onMounted(() => {
                         </DropdownMenuContent>
                     </DropdownMenu>
                 </div>
-
-
             </div>
 
-            <!-- Save Changes Button -->
             <div class="mt-4 flex gap-2">
                 <PageBuilderPreview :page="page" :blocks="blocks" />
                 <Button

@@ -13,7 +13,6 @@ const props = defineProps({
 
 <style>
 .quill-content {
-    /* font-family: 'Roboto', sans-serif; */
     line-height: 2rem;
 }
 
@@ -22,7 +21,7 @@ const props = defineProps({
     line-height: 1.2;
     font-weight: 600;
     letter-spacing: -0.025em;
-    color: #111827;
+    color: #0A2540;
     text-wrap: balance;
 }
 
@@ -38,7 +37,7 @@ const props = defineProps({
     line-height: 1.2;
     font-weight: 600;
     letter-spacing: -0.025em;
-    color: #111827;
+    color: #0A2540;
     text-wrap: balance;
 }
 
@@ -50,16 +49,21 @@ const props = defineProps({
 }
 
 .quill-content p {
-    font-size: 1.125rem; /* Example: Adjust paragraph size */
-    color: #4a5565; /* Example: Darker gray color */
+    font-size: 1.125rem;
+    color: #4a5565;
 }
 
 .quill-content strong {
-    font-weight: 600; /* Example: Bold text */
-    color: #111827;
+    font-weight: 600;
+    color: #0A2540;
 }
 
 .quill-content em {
-    font-style: italic; /* Example: Italic text */
+    font-style: italic;
+}
+
+.quill-content a {
+    color: #3498db;
+    text-decoration: underline;
 }
 </style>

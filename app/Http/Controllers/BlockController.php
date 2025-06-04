@@ -49,11 +49,6 @@ class BlockController extends Controller
         return response()->json(['message' => 'Blocks updated successfully!']);
     }
 
-    // public function index()
-    // {
-    //     $blocks = Block::all();
-    //     return response()->json($blocks);
-    // }
     public function showByPageId($pageId)
     {
         $blocks = Block::where('page_id', $pageId)->orderBy('order')->get();

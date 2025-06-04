@@ -16,10 +16,10 @@ defineProps({
     </div>
     <div class="px-6 mx-auto max-w-7xl pt-16 pb-32 lg:px-8 2xl:py-56">
       <div v-for="(subblock, index) in block.content" :key="index" class="flex justify-center my-8 max-w-2xl mx-auto">
-        <div v-if="subblock.type === 'Image'" class="relative px-3 py-1 w-52 sm:w-72 text-[#f88379] rounded-full">
+        <div v-if="subblock.type === 'Image'" class="relative px-3 py-1 text-[#f88379]">
             <ImageFront :subblock="subblock" />
         </div>
-        <h1 v-if="subblock.type === 'Heading'" class="text-center text-5xl font-semibold tracking-tight text-white text-balance sm:text-7xl">{{ subblock.text }}</h1>
+        <h1 v-if="subblock.type === 'Heading'" class="text-center text-5xl font-semibold tracking-tight text-[#F8F9FA] text-balance sm:text-7xl">{{ subblock.text }}</h1>
         <p v-else-if="subblock.type === 'Paragraph'" class="text-center text-lg font-medium text-gray-400 font-roboto text-pretty sm:text-xl/8">{{ subblock.text }}</p>
         <div v-else-if="subblock.type === 'Buttons'" class="flex items-center justify-center gap-x-6">
             <div v-for="(button, buttonIndex) in subblock.buttons" :key="buttonIndex">
@@ -27,7 +27,7 @@ defineProps({
                 <a
                     v-if="button.style === 'colored'"
                     :href="button.url"
-                    class="rounded-md bg-[#1DB954] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#1A9E4A] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1DB954]"
+                    class="rounded-md bg-[#1DB954] px-3.5 py-2.5 text-sm font-semibold text-[#F8F9FA] shadow-sm hover:bg-[#1A9E4A] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1DB954]"
                 >
                     {{ button.text }}
                 </a>
@@ -36,7 +36,7 @@ defineProps({
                 <a
                     v-else-if="button.style === 'arrow'"
                     :href="button.url"
-                    class="font-semibold hover:underline text-white text-sm/6 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1DB954]"
+                    class="font-semibold hover:underline text-[#F8F9FA] text-sm/6 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1DB954]"
                 >
                     {{ button.text }} <span aria-hidden="true">→</span>
                 </a>

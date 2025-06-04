@@ -33,7 +33,6 @@ const fetchImageData = async () => {
     }
 };
 
-// Fetch image data when the component is mounted
 onMounted(fetchImageData);
 </script>
 

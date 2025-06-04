@@ -2,7 +2,6 @@
 import { ref, watch, onMounted, onBeforeUnmount } from 'vue';
 import Quill from 'quill';
 
-// Props
 const props = defineProps({
     modelValue: {
         type: String,
@@ -10,7 +9,6 @@ const props = defineProps({
     },
 });
 
-// Emit event to notify parent about updates
 const emit = defineEmits(['update:modelValue']);
 
 // Reference to the Quill editor container
@@ -40,7 +38,8 @@ onMounted(() => {
                     ['bold', 'italic', 'underline'], // Formatting buttons
                     [{ header: 2 }, { header: 3 }], // Header buttons
                     [{ list: 'ordered' }, { list: 'bullet' }], // List buttons
-                    [{ color: [] }, { background: [] }], // Color and background
+                    [{ color: ['#f88379', '#1DB954', '#3498db'] }], // Color and background
+                    ['link'],              
                     ['clean'], // Remove formatting
                 ],
             },

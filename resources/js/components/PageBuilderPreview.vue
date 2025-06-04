@@ -37,9 +37,7 @@ defineProps({
                     class="absolute inset-0 z-10 bg-transparent cursor-not-allowed"
                 ></div>
                 <!-- Page content -->
-             
-                    <PageComponent :page="page" :blocks="blocks" />
-              
+                <PageComponent :page="page" :blocks="blocks" /> 
             </div>
         </DialogScrollContent>
     </Dialog>
