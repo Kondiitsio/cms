@@ -54,8 +54,9 @@
   };
   
   const getImageUrl = (image: Image) => {
-    return image.thumbnail_path ? `${image.thumbnail_path}` : `${image.path}`;
-  };
+      const path = image.thumbnail_path ? image.thumbnail_path : image.path;
+      return `/storage/${path.replace(/^\/?storage\//, '')}`;
+  }
   
   const formatSize = (size: number) => {
     const sizeInMB = size / (1024 * 1024);
