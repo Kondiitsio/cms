@@ -90,7 +90,7 @@ class ImageController extends Controller
         $image = Image::findOrFail($id);
 
         // Delete the image file from storage
-        Storage::disk('public')->delete('uploads/' . $image->file_name);
+        Storage::disk('public')->delete($image->path);
 
         // Delete the thumbnail if it exists
         if ($image->thumbnail_path) {
