@@ -41,7 +41,7 @@ I use this cms to manage my [personal website](https://anssij.com)
 ```sh
 git clone https://github.com/kondiitsio/cms.git
 cd YOUR-REPO
-cp [.env.example](http://_vscodecontentref_/0) .env
+cp .env.example .env
 composer install
 npm install
 php artisan key:generate
