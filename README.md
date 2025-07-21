@@ -42,11 +42,13 @@ I use this cms to manage my [personal website](https://anssij.com)
 git clone https://github.com/kondiitsio/cms.git
 cd YOUR-REPO
 cp .env.example .env
+Edit .env and set APP_URL to your domain: APP_URL=http://yourdomain.com
 composer install
 npm install
 php artisan key:generate
 php artisan migrate
 php artisan storage:link
+mkdir -p storage/app/public/thumbnails
 composer run dev
 ```
 
