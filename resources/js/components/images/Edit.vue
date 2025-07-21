@@ -100,7 +100,6 @@
       updateForm.name = newImage.name || '';
       updateForm.description = newImage.description || '';
     }
-    console.log('Selected Image for edit:', newImage);
   });
   
   const handleDelete = () => {

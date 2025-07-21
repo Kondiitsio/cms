@@ -43,13 +43,11 @@ const openStates = ref<boolean[]>([]);
 const fetchBlocks = async () => {
     try {
         const response = await axios.get(`/api/blocks/${props.page.id}`);
-        console.log('Fetched blocks:', response.data); // Log the fetched data
         blocks.value = response.data.map((block: any) => ({
             ...block,
             content: block.content ? JSON.parse(block.content) : [], // Parse JSON content or default to an empty array
         }));
         openStates.value = blocks.value.map(() => false); // Initialize open states for each block
-        console.log('Updated blocks:', blocks.value); // Log the updated blocks array
     } catch (error) {
         console.error('Error fetching blocks:', error);
     }
