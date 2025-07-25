@@ -173,12 +173,12 @@ onMounted(fetchPages);
                     />
                 </div>
                 <div class="mb-2">
-                    <Label for="seo" class="mb-2">SEO</Label>
+                    <Label for="seo" class="mb-2">Meta description</Label>
                     <Input
                         id="seo"
                         v-model="form.seo"
                         type="text"
-                        placeholder="Enter SEO description"
+                        placeholder="Enter meta description"
                     />
                 </div>
                 <div class="mb-2">

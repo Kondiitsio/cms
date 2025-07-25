@@ -60,11 +60,12 @@ const createBlock = (index: number) => {
     const newBlock = {
         id: null,
         title: newBlockType.value,
-        content: newBlockType.value === 'Hero' ? [] : { title: '' }, // Initialize content as an object for Content
+        content: newBlockType.value === 'Hero' ? [] : { title: '' },
         order: index,
     };
 
     blocks.value.splice(index, 0, newBlock); // Insert the new block at the specified index
+    openStates.value.splice(index, 0, true); // Open the new block's Collapsible
     updateBlockOrder(); // Update the order of all blocks
     newBlockType.value = ''; // Reset the block type selection
 };
